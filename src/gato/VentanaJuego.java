@@ -11,6 +11,7 @@ public class VentanaJuego extends javax.swing.JFrame {
     private String jugador1;
     private String jugador2;
     boolean val;
+    int emp;
     String turno;
     JLabel cas[] = new JLabel[9];
     String text[] = new String[9];
@@ -39,6 +40,7 @@ public class VentanaJuego extends javax.swing.JFrame {
     
     public void comprobacion(){
         val = true;
+        emp = 0;
         for(int i=0;i<text.length;i++){
             text[i] = cas[i].getText();
         }
@@ -108,6 +110,20 @@ public class VentanaJuego extends javax.swing.JFrame {
         }
     }
     
+    public void empate(){
+        emp = 0;
+        if(val){
+            for(int i=0;i<text.length;i++){
+                if(text[i].equals("X")||text[i].equals("O")){
+                    emp += 1;
+                }
+            }
+            if(emp>=9){
+                winner("EMPATE");
+            }
+        }
+    }
+    
     public void winner(String win){
         if(win.equals("X")){
             arch.SumarPuntos(jugador1);
@@ -115,10 +131,16 @@ public class VentanaJuego extends javax.swing.JFrame {
             gan.setVisible(true);
             this.dispose();
         }else{
-            arch.SumarPuntos(jugador2);
-            Ganar gan = new Ganar(jugador1,jugador2,"O");
-            gan.setVisible(true);
-            this.dispose();
+            if(win.equals("O")){
+                arch.SumarPuntos(jugador2);
+                Ganar gan = new Ganar(jugador1,jugador2,"O");
+                gan.setVisible(true);
+                this.dispose();
+            }else{
+                Ganar gan = new Ganar(jugador1,jugador2,"EMPATE");
+                gan.setVisible(true);
+                this.dispose();
+            }
         }
     }
     
@@ -138,6 +160,7 @@ public class VentanaJuego extends javax.swing.JFrame {
                 turnO.setForeground(new Color(204,0,0));
             }
             comprobacion();
+            empate();
         }else{
             JOptionPane.showMessageDialog(null, "Esta casilla ya esta ocupada");
         }

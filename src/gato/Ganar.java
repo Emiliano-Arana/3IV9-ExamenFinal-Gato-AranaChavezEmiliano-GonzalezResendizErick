@@ -18,8 +18,13 @@ public class Ganar extends javax.swing.JFrame {
             icon.setForeground(new Color(204,0,0));
             name.setText(jugador1);
         }else{
-            icon.setForeground(new Color(51,153,255));
-            name.setText(jugador2);
+            if(icono.equals("O")){
+                icon.setForeground(new Color(51,153,255));
+                name.setText(jugador2);
+            }else{
+                icon.setForeground(Color.black);
+                name.setText("-");
+            }
         }
     }
 
@@ -39,6 +44,7 @@ public class Ganar extends javax.swing.JFrame {
         jLabel1.setText("El Ganador es...");
 
         icon.setFont(new java.awt.Font("Ravie", 1, 48)); // NOI18N
+        icon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         icon.setText("X");
 
         jButton1.setText("Volver a Jugar");
@@ -64,20 +70,21 @@ public class Ganar extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(170, 170, 170)
-                                .addComponent(icon)))
-                        .addGap(0, 3, Short.MAX_VALUE))
-                    .addComponent(name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(0, 3, Short.MAX_VALUE))
+                            .addComponent(name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(icon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
